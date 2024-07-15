@@ -1,0 +1,44 @@
+// Setup
+$path = 'some/folder/where/is/prepared/image.jpg'; // EXAMPLE
+$user_id = 123; // EXAMPLE
+$upload_path = bp_core_avatar_upload_path();
+$upload_dir = 'avatars';
+
+// Define filename and data
+$filename = pathinfo($path, PATHINFO_BASENAME);
+$data = file_get_contents( $path );
+
+// Prepare final destination
+$user_upload_dir = "${upload_path}/${upload_dir}/${user_id}";
+
+if( !is_dir( $user_upload_dir ) ) {
+	wp_mkdir_p( $user_upload_dir );
+	
+	if( !is_dir( $user_upload_dir ) ) {
+		return false;
+	}
+}
+
+// Prepare temp image
+$img = "${user_upload_dir}/{$filename}";
+$fc = file_put_contents( $img, $data );
+
+// Get size
+$image_size = getimagesize( $img );
+$width = $image_size[0];
+$height = $image_size[1];
+
+// Save avatar and assign to user
+$res = bp_attachments_create_item_type( 'avatar', [
+	'item_id'   => $user_id,
+	'object'    => 'user',
+	'component' => '',
+	'image'     => $img,
+	'crop_w'    => $width,
+	'crop_h'    => $height,
+	'crop_x'    => 0,
+	'crop_y'    => 0,
+] );
+
+// Delete temp file
+wp_delete_file( $img );

@@ -1,0 +1,79 @@
+body {
+    width: 800px;
+    margin: 50px auto;
+}
+
+form {
+    display: flex;
+    flex-direction:column;
+}
+
+label {
+    font-weight: bold;
+}
+
+
+input {
+    margin-left: 10px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.button {
+    width: 200px;
+    padding: 15px 25px; /* dimensions */
+    box-shadow: 0 9px #999;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/*
+p {
+    padding: 5px;
+    border: 1px black solid ;
+    border-radius: 5px;
+    background-color: lightgray;
+    text-align: left;
+}
+*/
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.normal {
+    color: black;
+}
+
+table {
+  table-layout: auto ;  
+  width: 100%; 
+  border: 1px solid green; 
+  border-collapse: collapse ; /* les bordures seront collée */
+}
+
+th {
+    border: 1px solid black ;  /* ne pas mettre de blanc avant le px */
+/*    padding: 5px ; */
+    color: red ;    
+    font-size: 18px;
+   }
+
+
+td {
+    border: 1px solid black ; /* ne pas mettre de blanc avant le px */
+/*    padding: 5px ; */
+    color: black ;    
+    font-size: 18px;
+   }
+
+
+
+
+
