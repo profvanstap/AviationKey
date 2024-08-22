@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style11.css">
+    <link rel="stylesheet" href="css/style12.css">
     <title>Exercice 9 Ecran de saisie</title>
 </head>
 <body>
@@ -35,6 +35,8 @@
                     <option <?php if($Publication == 'FlyPastSpecial'){echo("selected");}?> value="FlyPastSpecial">FlyPastSpecial</option>
                     <option <?php if($Publication == 'Key'){echo("selected");}?> value="Key">Key</option>
 		    <option <?php if($Publication == 'ScaleAircraftModelling'){echo("selected");}?> value="ScaleAircraftModelling">ScaleAircraftModelling</option>
+		    <option <?php if($Publication == 'Squadron!'){echo("selected");}?> value="Squadron!">Squadron!</option>
+
                 </select> 
     </p>
     <p>
