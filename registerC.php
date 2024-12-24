@@ -2,7 +2,7 @@
     /* 
     Le contrôleur contient la logique métier de votre code.
     */
- 
+session_start();
 require_once("console_log.php") ; 
 require_once("Modele.php") ;
 
@@ -11,7 +11,8 @@ $classPublication = "normal" ;
 $classNumero = "normal" ;
 $classType  = "normal" ;
 $classArticle  = "normal" ;
-# Appel à la fonction enregistre
+
+# Appel à la fonction enregistre   
 
 if( isset($_POST['submit_OK'] ))
 {
@@ -24,7 +25,10 @@ if( isset($_POST['submit_OK'] ))
         $classPublication = "error" ;
     }
     else
-       $Publication =  $_POST['Publication'] ;
+       {
+        $Publication =  $_POST['Publication'] ;
+        $_SESSION['Publication'] = $_POST['Publication'] ;
+       }
     if (empty ( $_POST['Numero']))
     {
        $Numero = "" ;  
@@ -33,13 +37,16 @@ if( isset($_POST['submit_OK'] ))
     else
       $Numero =  $_POST['Numero'] ;
 
-    if (empty ( $_POST['Type']))
+    if (empty ( $_POST['Type']) && $Publication != 'Aeroplane Archive' )
     { 
        $Type = "" ;
        $classType = "error" ;
     }  
     else
-       $Type =  $_POST['Type'] ;
+       if ($Publication != 'Aeroplane Archive') 
+          $Type =  $_POST['Type'] ;
+       else
+          $Type = "Form" ;  
     if (empty ( $_POST['Article']))
     {
           $Article = "" ;
@@ -47,8 +54,9 @@ if( isset($_POST['submit_OK'] ))
     }
     else
         $Article  =  $_POST['Article'] ;  
+        
     
-     if (!empty ( $_POST['Publication']) && !empty ( $_POST['Numero']) &&  !empty ( $_POST['Type'])&& !empty ( $_POST['Article']))
+    if (!empty ( $_POST['Publication']) && !empty ( $_POST['Numero']) &&  !empty ( $Type )&& !empty ( $_POST['Article']))
          {
             Console_log("Publication:".$Publication) ;
             Console_log("Type:".$Type) ;
@@ -64,7 +72,7 @@ if( isset($_POST['submit_OK'] ))
                 $Message = "Remplacement réussi de ".$Id ;
                 $Id="" ;
                 $Article = "" ;      
-                /* $Publication = "" ; pour pouvoir faire une liste après */
+                /* $Publication = "" ;pour pouvoir faire une liste après */
                 $Numero = "" ;
                 $Type  = "" ; 
                }
@@ -275,8 +283,13 @@ else
     Console_log("classType:".$classType) ;
     
     $Id = "" ;
-    if(!isset($Publication))
-       $Publication = "" ; 
+    if(isset($Publication))
+          ;
+    else
+       if (isset($_SESSION['Publication'])) 
+          $Publication = $_SESSION['Publication'] ;
+       else
+          $Publication = "" ; 
     $Numero = "" ;
     $Type  = "" ;
     $Article  = "" ;

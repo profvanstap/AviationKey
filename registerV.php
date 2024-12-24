@@ -29,8 +29,9 @@
               <label for="Publication" class="<?php echo $classPublication ?>">  Publication:  </label>
               <select name="Publication" id="Publication" required>
                     <option <?php if($Publication == 'Aeroplane'){echo("selected");}?> value="Aeroplane">Aeroplane</option>
+                    <option <?php if($Publication == 'Aeroplane Archive'){echo("selected");}?> value="Aeroplane Archive">Aeroplane Archive</option>
                     <option <?php if($Publication == 'AirForces'){echo("selected");}?> value="AirForces">AirForces</option>
-		     <option <?php if($Publication == 'CombatAircraft'){echo("selected");}?> value="CombatAircraft">CombatAircraft</option>
+		            <option <?php if($Publication == 'CombatAircraft'){echo("selected");}?> value="CombatAircraft">CombatAircraft</option>
                     <option <?php if($Publication == 'FlyPast'){echo("selected");}?> value="FlyPast">FlyPast</option>
                     <option <?php if($Publication == 'FlyPastSpecial'){echo("selected");}?> value="FlyPastSpecial">FlyPastSpecial</option>
                     <option <?php if($Publication == 'Key'){echo("selected");}?> value="Key">Key</option>
